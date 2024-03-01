@@ -6,6 +6,9 @@ import { HomePic } from "../components/HomePic";
 import { Frames } from "../components/Frames";
 import { Sales } from "../components/Sales";
 import { MainDishes } from "../components/MainDishes";
+import { Salads } from "../components/Salads";
+import { Desert } from "../components/Desert";
+import { Footer } from "../components/Footer";
 
 import { useState } from "react";
 
@@ -44,6 +47,9 @@ export default function Home() {
       </div>
       <Sales />
       <MainDishes />
+      <Salads />
+      <Desert />
+      <Footer />
     </div>
   );
 }
