@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubSales } from "../components/subComponents/SubSales";
 
 export const Desert = () => {
+  const [sales, setSales] = useState(false);
+
   const array = [
     { image: "/assets/oryoshake.png", title: "Oreo shake", price: 22800 },
   ];
@@ -22,21 +24,29 @@ export const Desert = () => {
         </div>
       </div>
       <div className="flex m-auto w-[1200px] justify-between">
-        <SubSales image={"/assets/торт.png"} title={"Торт"} price={34800} />
+        <SubSales
+          image={"/assets/торт.png"}
+          title={"Торт"}
+          price={34800}
+          sales={sales}
+        />
         <SubSales
           image={array[0].image}
           title={array[0].title}
           price={array[0].price}
+          sales={sales}
         />
         <SubSales
           image={"/assets/chocolate.png"}
           title={"Chocolate"}
           price={14800}
+          sales={sales}
         />
         <SubSales
           image={"/assets/yoghurt.png"}
           title={"Yoghurt"}
           price={17800}
+          sales={sales}
         />
       </div>
     </div>

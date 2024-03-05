@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { SubSales } from "../components/subComponents/SubSales";
 
-
-
 export const Salads = () => {
+  const [sales, setSales] = useState(false);
+
   return (
     <div>
       <div className="flex items-center w-[1200px] m-auto justify-between px-3 mb-[42px]">
@@ -24,17 +24,25 @@ export const Salads = () => {
           image={"/assets/чихэрлэгтахиа.png"}
           title={"Чихэрлэг тахиа"}
           price={34800}
+          sales={sales}
         />
-        <SubSales image={"/assets/lunch.png"} title={"Lunch"} price={22800} />
+        <SubSales
+          image={"/assets/lunch.png"}
+          title={"Lunch"}
+          price={22800}
+          sales={sales}
+        />
         <SubSales
           image={"/assets/сэндвич.png"}
           title={"Сэндич"}
           price={14800}
+          sales={sales}
         />
         <SubSales
           image={"/assets/applepie.png"}
           title={"Apple pie"}
           price={17800}
+          sales={sales}
         />
       </div>
     </div>
