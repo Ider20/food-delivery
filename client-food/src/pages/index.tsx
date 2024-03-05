@@ -21,7 +21,6 @@ export default function Home() {
   };
   return (
     <div>
-      <NavBar />
       <HomePic />
       <div className="flex w-[1200px] m-auto mt-[122px] mb-[122px] gap-[8px]">
         <Frames
@@ -49,7 +48,6 @@ export default function Home() {
       <MainDishes />
       <Salads />
       <Desert />
-      <Footer />
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React from "react";
 
 export const Footer = () => {
   return (
-    <div className="w-full bg-[#18BA51]">
-      <div className="w-[1440px] h-[545px] bg-watermark m-auto py-[114px]">
+    <div className="w-full bg-[#18BA51] bg-watermark">
+      <div className="w-[1440px] h-[545px] m-auto py-[114px]">
         <div className="w-[1200px] flex flex-col gap-10 m-auto">
           <div className="flex items-center justify-center gap-2">
             <img
@@ -34,9 +34,21 @@ export const Footer = () => {
             </li>
           </ul>
           <div className="flex justify-center gap-[18px] mb-10">
-            <img src="/assets/icon/facebook.png" alt="" className="w-9" />
-            <img src="/assets/icon/instagram.png" alt="" className="w-9" />
-            <img src="/assets/icon/twitter.png" alt="" className="w-9" />
+            <img
+              src="/assets/icon/facebook.png"
+              alt=""
+              className="w-9 hover:scale-110 duration-200 cursor-pointer"
+            />
+            <img
+              src="/assets/icon/instagram.png"
+              alt=""
+              className="w-9 hover:scale-110 duration-200 cursor-pointer"
+            />
+            <img
+              src="/assets/icon/twitter.png"
+              alt=""
+              className="w-9 hover:scale-110 duration-200 cursor-pointer"
+            />
           </div>
         </div>
         <hr className="w-[1200px] m-auto mb-10" />

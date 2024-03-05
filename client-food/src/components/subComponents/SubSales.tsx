@@ -6,6 +6,7 @@ type SubSales = {
   price: number;
   preprice?: number | undefined;
   sales: boolean;
+  discount?: number;
 };
 export const SubSales = ({
   image,
@@ -13,13 +14,19 @@ export const SubSales = ({
   price,
   preprice,
   sales,
+  discount,
 }: SubSales) => {
   //   const [sales, setSales] = useState(false);
-
+  // console.log(sales);
   return (
-    <div className="hover:scale-[1.02] duration-200 cursor-pointer mb-[96px]">
+    <div className="group hover:scale-[1.02] duration-200 cursor-pointer mb-[96px]">
+      {sales && (
+        <div className="absolute ml-[190px] mt-[15px] z-10 text-white text-lg font-bold border border-white bg-[#18BA51] px-3 rounded-full group-hover:scale-125 duration-200">
+          {discount}%
+        </div>
+      )}
       <img src={image} alt="" className="w-[282px] h-[186px] relative z-0" />
-      <div className="absolute top-1 z-50 text-white">20%</div>
+
       <p className="text-lg font-semibold px-2">{title}</p>
       <div className="flex gap-4 items-center px-2">
         <p className="text-[#18BA51] font-semibold text-lg">{price}₮</p>

@@ -26,6 +26,7 @@ export const Sales = () => {
           price={14800}
           preprice={16800}
           sales={sales}
+          discount={50}
         />
         <SubSales
           image={"/assets/icecream.png"}
@@ -33,6 +34,7 @@ export const Sales = () => {
           price={4800}
           preprice={6800}
           sales={sales}
+          discount={20}
         />
         <SubSales
           image={"/assets/richyoghurt.png"}
@@ -40,6 +42,7 @@ export const Sales = () => {
           price={24800}
           preprice={26800}
           sales={sales}
+          discount={30}
         />
         <SubSales
           image={"/assets/breakfast.png"}
@@ -47,6 +50,7 @@ export const Sales = () => {
           price={24800}
           preprice={26800}
           sales={sales}
+          discount={15}
         />
       </div>
     </div>

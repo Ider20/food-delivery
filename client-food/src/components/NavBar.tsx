@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { LoginModal } from "../components/LoginModal";
 
 export const NavBar = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleLoginModal = () => {
+    setShowModal(!showModal);
+  };
+
   return (
-    <div className="w-full fixed z-10 bg-white">
+    <div className="w-full fixed z-20 bg-white">
       <div className="w-[1440px] m-auto">
         <div className="w-[1440px] h-[57px] bg-white flex justify-between items-center px-[91px]">
           <div className="flex items-center gap-2 font-bold text-sm">
@@ -35,13 +42,17 @@ export const NavBar = () => {
             </div>
             <div className="flex items-center px-2">
               <img src="/assets/avatar.png" alt="" className="w-[17px]" />
-              <p className="px-2 py-1 hover:text-[#18BA51] duration-200 cursor-pointer">
+              <button
+                className="px-2 py-1 hover:text-[#18BA51] duration-200 cursor-pointer"
+                onClick={handleLoginModal}
+              >
                 Нэвтрэх
-              </p>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      <div className="">{showModal && <LoginModal />}</div>
     </div>
   );
 };
