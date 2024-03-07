@@ -2,18 +2,19 @@ import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { errors } from "undici-types";
+import axios from "axios";
 
 export const SignUpComponent = () => {
   const formik = useFormik({
     initialValues: {
-      firstName: "",
+      name: "",
       email: "",
       address: "",
       password: "",
       rePassword: "",
     },
     validationSchema: Yup.object({
-      firstName: Yup.string()
+      name: Yup.string()
         .max(15, "15 тэмдэгтээс дээшгүй байна")
         .required("Зайлшгүй бөглөнө"),
       email: Yup.string()
@@ -26,14 +27,36 @@ export const SignUpComponent = () => {
         .min(8, "8 тэмдэгтээс доошгүй байна")
         .required("Зайлшгүй бөглөнө"),
       rePassword: Yup.string().oneOf(
-        [Yup.ref("password"), null as any],
+        [Yup.ref("password"), undefined],
         '"Нууц үг"-тэй ямагт таарах ёстой'
       ),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      // console.log(values);
+      try {
+        const userData = {
+          name: values.name,
+          email: values.email,
+          address: values.address,
+          password: values.password,
+        };
+        const response = await axios.post(
+          "http://localhost:8080/signup",
+          userData
+        );
+        console.log(response, "response");
+      } catch (error) {
+        console.error(error);
+      }
     },
   });
+
+  // const handleSubmit = async () => {
+  //   try {
+  //     const response = await axios.post("http:localhost:8080/signup");
+  //   } catch (error) {}
+  // };
+
   // console.log(formik.values.firstName, "Name");
   return (
     <div className="pt-[168px] w-[440px]  m-auto p-8">
@@ -45,17 +68,17 @@ export const SignUpComponent = () => {
           Нэр
         </label>
         <input
-          id="firstName"
-          name="firstName"
+          id="name"
+          name="name"
           type="text"
           className="border w-full h-[48px] rounded placeholder:text-xs px-4"
           placeholder="Нэрээ оруулна уу"
           onChange={formik.handleChange}
-          value={formik.values.firstName}
+          value={formik.values.name}
         />
         <div className="text-red-500 mb-4 text-xs">
-          {formik.touched.firstName && formik.errors.firstName ? (
-            <p>{formik.errors.firstName}</p>
+          {formik.touched.name && formik.errors.name ? (
+            <p>{formik.errors.name}</p>
           ) : null}
         </div>
 
