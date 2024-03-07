@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 export const signUp = async (req: Request, res: Response) => {
   const { name, email, address, password } = req.body;
-  console.log(name, "name");
+  console.log(req.body, "name");
   try {
     const encryptedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({

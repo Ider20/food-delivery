@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { errors } from "undici-types";
@@ -12,6 +12,7 @@ export const SignUpComponent = () => {
       address: "",
       password: "",
       rePassword: "",
+      check: false,
     },
     validationSchema: Yup.object({
       name: Yup.string()
@@ -29,6 +30,10 @@ export const SignUpComponent = () => {
       rePassword: Yup.string().oneOf(
         [Yup.ref("password"), undefined],
         '"Нууц үг"-тэй ямагт таарах ёстой'
+      ),
+      check: Yup.bool().oneOf(
+        [true],
+        "Та үйлчилгээний нөхцөл зөвшөөрөөгүй байна"
       ),
     }),
     onSubmit: async (values) => {
@@ -156,11 +161,23 @@ export const SignUpComponent = () => {
           ) : null}
         </div>
         <br />
-        <input type="checkbox" name="" id="" className="mb-8 mr-4" />
+        <input
+          type="checkbox"
+          name="check"
+          id="check"
+          className="mb-8 mr-4"
+          onChange={formik.handleChange}
+        />
         <span className="">Үйлчилгээний нөхцөл зөвшөөрөх</span>
+        <div className="text-red-500 text-xs">
+          {formik.touched.check && formik.errors.check ? (
+            <p>{formik.errors.check}</p>
+          ) : null}
+        </div>
         <br />
         <button
           type="submit"
+          disabled={!formik.isValid}
           className={`border w-full h-12 mb-[139px]  rounded ${
             formik.isValid
               ? "bg-[#18BA51] text-white hover:scale-[1.02] duration-200 active:scale-[0.98]"
